@@ -1,0 +1,17 @@
+[root@ecs--yjy-docker0 war]# docker run -d  --name db-5.7 -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+[root@ecs--yjy-docker0 war]# docker cp /home/docker/deploy/finance/war/trade_financing_pro.sql db-5.7:/home/trade_financing_pro.sql
+[root@ecs--yjy-docker0 war]# docker exec -it 6518be1b2ddc /bin/bash
+root@6518be1b2ddc:/# mysql -u root -p
+mysql> show databases;
+mysql> create database db;
+mysql> use db;
+mysql> source /home/trade_financing_pro.sql;
+
+[root@ecs--yjy-docker0 war]# docker run -it -p 8080:8080 \
+--restart=always \
+--name finance-test \
+--link db-5.7 \
+-v /home/docker/deploy/finance/logs:/usr/local/tomcat/logs \
+-v /home/docker/deploy/finance/upload-files:/home/docker/deploy/projects/finance/upload-files \
+-v /home/docker/deploy/finance/conf/context.xml:/usr/local/tomcat/conf/context.xml  \
+finance-test:0.0.1
