@@ -1,0 +1,8 @@
+# Dockerfile 定义：volume参数
+创建容器的时候会在宿主机自动创建对应容器路径【volume参数】的路径
+
+# -v 参数 
+可通过 docker run -v pathname:volume参数 指定宿主机对应的路径。
+
+
+
