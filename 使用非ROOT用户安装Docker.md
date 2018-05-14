@@ -37,7 +37,7 @@ No packages marked for update
 
 ## 将用户加入docker用户
 ```
-[centos@docker0 ~]$  sudo gpasswd -a ${USER} docker
+[centos@docker0 ~]$ sudo gpasswd -a ${USER} docker
 [centos@docker0 ~]$ sudo systemctl restart docker
 [centos@docker0 ~]$ su root
 Password: 
@@ -56,3 +56,6 @@ portainer_data:/data portainer/portainer
 CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS              PORTS                    NAMES
 43170e96b83e        portainer/portainer   "/portainer"        3 seconds ago       Up 2 seconds        0.0.0.0:9009->9000/tcp   portainer
 ```
+
+## 参考：
+https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart
