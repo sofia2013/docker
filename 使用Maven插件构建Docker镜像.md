@@ -12,7 +12,7 @@
 
 1、开放2375端口
 ```
-[root@k8s-master]# vim daemon.json
+[root@k8s-master]# vim /etc/docker/daemon.json
 ```
 添加如下配置：
 ```
