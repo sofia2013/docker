@@ -1,0 +1,6 @@
+mysql日志时区问题：
+
+docker run -e MYSQL_ROOT_PASSWORD=root -v /etc/localtime:/etc/localtime:ro  -d mysql:5.7 --log_timestamps=SYSTEM
+
+目前java api未提供相关参数的配置接口
+conf未起作用
