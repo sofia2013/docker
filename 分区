@@ -1,0 +1,39 @@
+
+[root@ecs--yjy-docker0 ~]# fdisk /dev/vdd
+Welcome to fdisk (util-linux 2.23.2).
+
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help): d
+Selected partition 1
+Partition 1 is deleted
+
+Command (m for help): n
+Partition type:
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-209715199, default 2048): 
+Using default value 2048
+Last sector, +sectors or +size{K,M,G} (2048-209715199, default 209715199): 
+Using default value 209715199
+Partition 1 of type Linux and of size 100 GiB is set
+
+Command (m for help): w
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+
+WARNING: Re-reading the partition table failed with error 16: Device or resource busy.
+The kernel still uses the old table. The new table will be used at
+the next reboot or after you run partprobe(8) or kpartx(8)
+Syncing disks.
+[root@ecs--yjy-docker0 ~]# fdisk -l
+[root@ecs--yjy-docker0 ~]# umount /docker-data
+[root@ecs--yjy-docker0 ~]# mkfs.ext4 /dev/vdd1
+[root@ecs--yjy-docker0 ~]# mount /dev/vdd1 /docker-data
+[root@ecs--yjy-docker0 ~]# vim /etc/fstab
+[root@ecs--yjy-docker0 ~]# reboot
